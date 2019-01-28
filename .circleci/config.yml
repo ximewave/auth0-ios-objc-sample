@@ -1,7 +1,7 @@
 version: 2
 jobs:
   objc-01:
-    working_directory: ~auth0-ios-objc-sample/01-Login
+    working_directory: ~/auth0-ios-objc-sample/01-Login
     macos:
       xcode: "10.0.0"
     steps:
