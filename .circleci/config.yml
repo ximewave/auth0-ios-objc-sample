@@ -8,12 +8,12 @@ jobs:
       - checkout
       
       - run: 
-        name: Install Homebrew dependencies
-        command: brew install yarn
+          name: Install Homebrew dependencies
+          command: brew install yarn
       
       - run:
-        name: Install node dependencies
-        command: yarn install
+          name: Install node dependencies
+          command: yarn install
       
       - run:
           name: Fetch CocoaPods Specs
