@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  objc-01:
+    working_directory: ~auth0-ios-objc-sample/01-Login
+    macos:
+      xcode: "10.0.0"
+    steps:
+      - checkout
+      
+      - run: 
+        name: Install Homebrew dependencies
+        command: brew install yarn
+      
+      - run:
+        name: Install node dependencies
+        command: yarn install
+      
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+
+      - run:
+          name: Install CocoaPods
+          command: pod install --verbose
+
+      - run:
+          name: Build and run tests
+          command: fastlane scan
+          environment:
+            SCAN_DEVICE: iPhone 8
+
+      - store_test_results:
+          path: output/scan
+
+      - store_artifacts:
+          path: output
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      -  objc-01
