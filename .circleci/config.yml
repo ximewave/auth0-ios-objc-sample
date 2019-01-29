@@ -21,9 +21,9 @@ jobs:
       - run:
           name: Build and run tests
           command: |
-            xcodebuild -workspace CLI.xcworkspace -scheme CLI -destination generic/platform=iOS build
-            xcodebuild -workspace CLI.xcworkspace -scheme CLI -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/CLI.xcarchive
-            xcodebuild -exportArchive -archivePath $PWD/build/CLI.xcarchive -exportOptionsPlist exportOptions.plist -exportPath $PWD/build
+            xcodebuild -workspace Auth0Sample.xcworkspace -scheme Auth0Sample -destination generic/platform=iOS build
+            xcodebuild -workspace Auth0Sample.xcworkspace -scheme Auth0Sample -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/Auth0Sample.xcarchive
+            xcodebuild -exportArchive -archivePath $PWD/build/Auth0Sample.xcarchive -exportOptionsPlist exportOptions.plist -exportPath $PWD/build
 
       - store_test_results:
           path: output/scan
